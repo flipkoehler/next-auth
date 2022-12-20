@@ -3,8 +3,9 @@ import styled from "styled-components";
 // This is a demo component to demonstrate Styled Components integration
 
 export function OctopusCard({octopus, locked = false}) {
+  const color = octopus?.color || "black";
   return (
-    <StyledCard color={octopus?.color}>
+    <StyledCard color={color}>
       {locked ? (
         <h1>🔒 Unauthorized</h1>
       ) : (
