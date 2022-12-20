@@ -3,9 +3,11 @@ import {useState, useEffect} from "react";
 import Link from "next/link";
 import {StyledContainer} from "../components/StyledContainer";
 import {StyledButton} from "../components/StyledButton";
+import {useSession, signIn, signOut} from "next-auth/react";
 
 export default function Home() {
   const [octopodes, setOctopodes] = useState([]);
+  const {data: session} = useSession();
 
   useEffect(() => {
     const loadOctopodes = async () => {
@@ -29,7 +31,18 @@ export default function Home() {
   return (
     <StyledContainer>
       <StyledSection>
-        <StyledButton>Login</StyledButton>
+        {session?.user && session?.user.name}
+        {session?.user ? (
+          <StyledButton onClick={() => signOut()}>Logout</StyledButton>
+        ) : (
+          <StyledButton
+            onClick={() => {
+              signIn("github");
+            }}
+          >
+            Login
+          </StyledButton>
+        )}
       </StyledSection>
       <StyledList>
         {octopodes.map(octo => {
