@@ -14,7 +14,7 @@ export function OctopusCard({octopus, locked = false}) {
           <h1>🔓 My secret octopus profile</h1>
           <h2>🐙 {octopus?.name}</h2>
           <p>I am {octopus?.age} years old</p>
-          <p>testi</p>
+          <p>Tesi super sweet</p>
         </>
       )}
     </StyledCard>
